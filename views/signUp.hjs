@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    <p>Please sign up!</p>
 
-    <a href="/users/new">Sign Up!</a>
+    <a href="/">Homepage</a>
   </body>
 </html>

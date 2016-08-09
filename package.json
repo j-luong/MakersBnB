@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test": "./node_modules/.bin/jasmine-node spec --verbose",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -14,5 +15,10 @@
     "less-middleware": "1.0.x",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0",
+    "zombie": "latest",
+    "jasmine-node": "latest"
   }
 }
