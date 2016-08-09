@@ -10,4 +10,8 @@ router.get('/users/new', function(req, res) {
   res.render('signUp', { title: 'nodeAbode' });
 });
 
+router.post('/users', function(req, res) {
+  res.redirect('/');
+});
+
 module.exports = router;

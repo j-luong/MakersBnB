@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    <p>Welcome to {{ title }}!</p>
 
     <a href="/users/new">Sign Up!</a>
   </body>

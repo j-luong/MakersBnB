@@ -5,16 +5,42 @@ Browser.localhost('example.com', 3000);
 describe('User visits signup page', function(){
   var browser = new Browser();
 
-  // before(function(done) {
-  //   browser.visit('/users/new', done);
+  it('should be able to visit sign up page', function(next){
+    browser.visit('/users/new', function(err) {
+      expect(browser.success).toBe(true);
+      next();
+    });
+  });
+
+  it('should see sign up message', function(next){
+    browser.visit('/users/new', function(err) {
+      expect(browser.html("body")).toContain('Please sign up!');
+      next();
+    });
+  });
+  it('should have a link to sign up on the homepage', function(next){
+    browser.visit('/', function(err) {
+      browser.clickLink("Sign Up!");
+      expect(browser.location.pathname).toBe("/users/new");
+      next();
+    });
+  });
+
+  // describe('signUp form', function(){
+    // var browser = new Browser();
+
+    it('should have a form to fill in', function(next){
+      browser.visit('/users/new', function(err) {
+        browser.fill('email', 'user@domain.com');
+        browser.fill('password', 'password');
+        browser.fill('confirm password', 'password');
+        browser.pressButton('Sign Up!', function(){
+        expect(browser.html("body")).toContain('Welcome to nodeAbode!');
+        next();
+        });
+      });
+    });
   // });
 
-  describe('signUp form', function(){
 
-  });
-
-  it('should see sign up message', function(){
-    browser.visit('/users/new');
-    browser.assert.text('Please sign up!');
-  });
 });
