@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ title }}</title>
+    <title>nodeAbode</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>{{ title }}</h1>
+    <h1>nodeAbode</h1>
     <h2>Abode sweet Abode!</h2>
     <a href="/listings/new">Add new.</a>
+    <p>
 
-
+      {{ allListings }}
+    
+    </p>
 
   </body>
 </html>
