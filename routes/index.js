@@ -12,9 +12,22 @@ router.get('/users/new', function(req, res) {
   res.render('signUp', { title: 'nodeAbode' });
 });
 
-
 router.get('/listings', function(req, res) {
   res.render('listings', {title: 'nodeAbode' });
+});
+
+router.get('/listings/new', function(req, res) {
+  res.render('listingsNew', {title: 'nodeAbode' });
+});
+
+router.post('/listings', function(req, res, next) {
+  models.Listing.create({
+    title: req.param('title'),
+    description: req.param('description'),
+    price: req.param('price')
+  }).then(function() {
+    res.redirect('/listings');
+  });
 });
 
 router.post('/users', function(req, res, next) {
