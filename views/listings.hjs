@@ -10,8 +10,14 @@
     <a href="/listings/new">Add new.</a>
     <p>
 
-      {{ allListings }}
-    
+
+    {{#allListings}}
+    <div class="listing">
+    <b>{{title}}</b><br/>
+    {{description}}<br/>
+    £{{price}}
+    </div>
+    {{/allListings}}
     </p>
 
   </body>
