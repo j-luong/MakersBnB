@@ -32,7 +32,8 @@ describe('User visits signup page', function(){
         browser.fill('password', 'password');
         browser.fill('confirm password', 'password');
         browser.pressButton('Sign Up!', function(){
-        expect(browser.html("body")).toContain('Welcome to nodeAbode!');
+        expect(browser.html("body")).toContain('Abode sweet Abode!');
+        expect(browser.location.pathname).toBe("/listings");
         next();
         });
       });
