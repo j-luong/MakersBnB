@@ -26,9 +26,6 @@ describe('User visits signup page', function(){
     });
   });
 
-  // describe('signUp form', function(){
-    // var browser = new Browser();
-
     it('should have a form to fill in', function(next){
       browser.visit('/users/new', function(err) {
         browser.fill('email', 'user@domain.com');
@@ -40,7 +37,6 @@ describe('User visits signup page', function(){
         });
       });
     });
-  // });
 
 
 });

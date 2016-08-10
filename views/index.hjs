@@ -6,8 +6,15 @@
   </head>
   <body>
     <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}!</p>
-
+    <h2>Welcome to {{ title }}!</h2>
     <a href="/users/new">Sign Up!</a>
+
+    <div class="fullscreen-bg">
+        <video loop muted autoplay poster="../Pink-Swan/WEBM/Pink-Swan.jpg" class="fullscreen-bg__video">
+            <source src="../Pink-Swan/WEBM/Pink-Swan.webm" type="video/webm">
+            <source src="../Pink-Swan/MP4/Pink-Swan.mp4" type="video/mp4">
+        </video>
+    </div>
+
   </body>
 </html>
