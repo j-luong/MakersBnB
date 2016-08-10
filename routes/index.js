@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var models = require('../server/models/index');
+// var listings = require('../server/models/listing');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -13,7 +14,9 @@ router.get('/users/new', function(req, res) {
 });
 
 router.get('/listings', function(req, res) {
-  res.render('listings', {title: 'nodeAbode' });
+  listings = models.Listing.findAll().then(function(listings) {
+     res.render('listings', { allListings: listings });
+   });
 });
 
 router.get('/listings/new', function(req, res) {
