@@ -6,11 +6,11 @@ describe('User visits new listings page', function(){
   var browser = new Browser();
 
   it('should have a link to a new listings form', function(next){
-  //   browser.visit('/users/new', function(err) {
-  //     browser.fill('username', 'user@domain.com');
-  //     browser.fill('password', 'password');
-  //     browser.pressButton('Sign Up!');
-  //   });
+    // browser.visit('/users/new', function(err) {
+    //   browser.fill('username', 'user@domain.com');
+    //   browser.fill('password', 'password');
+    //   browser.pressButton('Sign Up!');
+    // });
     browser.visit('/listings', function(err) {
       expect(browser.success).toBe(true);
       // browser.clickLink("Add new.", function(){

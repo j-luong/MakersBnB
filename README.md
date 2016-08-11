@@ -27,3 +27,6 @@ Creating the databases
 ```
 - run your DB migrate using:
  - ```node_modules/.bin/sequelize db:migrate```
+
+
+ **Made with love by Jason, Jess** and Mike **<3**

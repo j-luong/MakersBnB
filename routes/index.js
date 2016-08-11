@@ -11,7 +11,7 @@ app.use(passport.session());
 
 router.use(function(req, res, callback){
   if(req.user){
-    // res.locals.currentUser = req.user.username;
+    res.locals.currentUsername = req.user.username;
     res.locals.currentUser = req.user;
   }
   callback();
@@ -37,8 +37,8 @@ router.post('/sessions/new', passport.authenticate("local", {
 
 router.get('/listings', function(req, res) {
   listings = models.Listing.findAll().then(function(listings) {
-     res.render('listings', { allListings: listings, currentUser: res.locals.currentUser.username });
-   });
+      res.render('listings', { allListings: listings, currentUser: res.locals.currentUsername });
+  });
 });
 
 router.get('/listings/new', function(req, res) {
