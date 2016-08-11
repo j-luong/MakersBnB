@@ -22,8 +22,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(require("cookie-parser")())
-app.use(require("express-session")( { secret: "supersecret" } ))
+app.use(require("cookie-parser")());
+app.use(require("express-session")( { secret: "supersecret" } ));
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());

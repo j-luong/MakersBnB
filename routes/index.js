@@ -1,13 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy
+var LocalStrategy = require('passport-local').Strategy;
 var models = require('../server/models/index');
 var bcrypt = require('bcrypt-nodejs');
 var app = express();
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+router.use(function(req, res, callback){
+  if(req.user){
+    res.locals.currentUser = req.user.username;
+  }
+  callback();
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -20,7 +27,7 @@ router.get('/users/new', function(req, res) {
 
 router.get('/listings', function(req, res) {
   listings = models.Listing.findAll().then(function(listings) {
-     res.render('listings', { allListings: listings });
+     res.render('listings', { allListings: listings, currentUser: res.locals.currentUser });
    });
 });
 
@@ -53,11 +60,11 @@ router.post('/users', function(req, res, callback) {
           failureRedirect: '/',
           successRedirect: '/listings'
         })(req, res, callback);
-      })
+      });
     } else {
       res.send("User already exists!");
     }
-  })
+  });
 });
 
 passport.use(new LocalStrategy(function(username, pass, callback){
@@ -68,32 +75,28 @@ passport.use(new LocalStrategy(function(username, pass, callback){
     }
   }).then(function(user, err){
     if(err){ //if there is an error
-      console.log("********************111111********************");
       return callback(err);
     }
     if(!user){ //if user does not exist
-      console.log("********************2222222********************");
       return callback(null, false);
     }
     if(!bcrypt.compareSync(pass, user.password)){ //if password do not match with db password
-      console.log("********************333333********************");
       return callback(null, false);
     }
-    console.log("********************44444********************");
     return callback(null, user);
-  })
-}))
+  });
+}));
 
 //put users into db
 passport.serializeUser(function(user, callback){
   callback(null, user.id);
-})
+});
 
 //get users from db
 passport.deserializeUser(function(id, callback){
   models.User.findById(id).then(function(user){
     callback(null, user);
-  })
-})
+  });
+});
 
 module.exports = router;

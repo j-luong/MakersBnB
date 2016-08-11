@@ -6,7 +6,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true
     },
-    password: DataTypes.STRING
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     classMethods: {
       associate: function(models) {

@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "jasonluong",
+    "username": "michael",
     "password": "12345",
     "database": "nodeabode_development",
     "host": "127.0.0.1",
@@ -8,7 +8,7 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "jasonluong",
+    "username": "michael",
     "password": "12345",
     "database": "nodeabode_test",
     "host": "127.0.0.1",
