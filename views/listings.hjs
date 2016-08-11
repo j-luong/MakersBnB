@@ -7,6 +7,9 @@
   <body>
     <h1>nodeAbode</h1>
     <h2>Abode sweet Abode!</h2>
+    {{#currentUser}}
+      <h4>Welcome user!</h4>
+    {{/currentUser}}
     <a href="/listings/new">Add new.</a>
     <p>
 

@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var User = require('./server/models/user');
+
 var app = express();
 
 // view engine setup
@@ -18,10 +20,34 @@ app.set('view engine', 'hjs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(require("cookie-parser")())
+app.use(require("express-session")( { secret: "supersecret" } ))
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+//passport config
+// passport.use(new LocalStrategy(function(email, pass, callback){
+//   var hashedPass = bcrypt.hashSync(pass)
+//   User.findOne({
+//     where: {
+//       email: email
+//     }
+//   }).then(function(user,err){
+//     if(err){
+//       return callback(err);
+//     }
+//     if(!user){
+//       return callback(null, false);
+//     }
+//     if(!bcrypt.compareSync(pass, user.password)){
+//       return callback(null, false);
+//     }
+//     return callback(null, user);
+//   })
+// }))
 
 app.use('/', routes);
 app.use('/users', users);
