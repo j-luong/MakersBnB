@@ -7,20 +7,24 @@
   <body>
     <h1>nodeAbode</h1>
     <h2>Abode sweet Abode!</h2>
+
     {{#currentUser}}
-      <h4>Welcome {{currentUser}}!</h4>
+    
+      <h4>Welcome {{currentUser}}!</h4> <form action='/sessions' method='post'>
+      <input type = 'submit' value='Sign out'>
+      </form>
+      <a href="/listings/new">Add new.</a>
+
     {{/currentUser}}
-    <a href="/listings/new">Add new.</a>
+
     <p>
-
-
-    {{#allListings}}
-    <div class="listing">
-    <b>{{title}}</b><br/>
-    {{description}}<br/>
-    £{{price}}
-    </div>
-    {{/allListings}}
+      {{#allListings}}
+      <div class="listing">
+      <b>{{title}}</b><br/>
+      {{description}}<br/>
+      £{{price}}
+      </div>
+      {{/allListings}}
     </p>
 
   </body>

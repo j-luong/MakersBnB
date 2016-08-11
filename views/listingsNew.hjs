@@ -5,7 +5,11 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+
     <h1>{{ title }}</h1>
+
+    {{#currentUser}}
+
     <h2>Add details below...</h2>
 
     <form action="/listings" method = "post">
@@ -14,6 +18,10 @@
       <input type = "number" name = "price" placeholder="price"/>
       <input type="submit" name="Add."/>
     </form>
+
+    {{/currentUser}}
+
+
 
   </body>
 </html>

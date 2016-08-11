@@ -32,7 +32,12 @@ router.get('/listings', function(req, res) {
 });
 
 router.get('/listings/new', function(req, res) {
-  res.render('listingsNew', {title: 'nodeAbode' });
+  if(res.locals.currentUser){
+    res.render('listingsNew', {title: 'nodeAbode' });
+  }
+  else{
+    res.redirect('/')
+  }
 });
 
 router.post('/listings', function(req, res, next) {
@@ -65,6 +70,11 @@ router.post('/users', function(req, res, callback) {
       res.send("User already exists!");
     }
   });
+});
+
+router.post('/sessions', function(req, res){
+  req.session.destroy();
+  res.redirect("/");
 });
 
 passport.use(new LocalStrategy(function(username, pass, callback){
