@@ -4,9 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var passport = require('passport');
 
 var User = require('./server/models/user');
 
@@ -26,28 +26,8 @@ app.use(require("cookie-parser")())
 app.use(require("express-session")( { secret: "supersecret" } ))
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-//passport config
-// passport.use(new LocalStrategy(function(email, pass, callback){
-//   var hashedPass = bcrypt.hashSync(pass)
-//   User.findOne({
-//     where: {
-//       email: email
-//     }
-//   }).then(function(user,err){
-//     if(err){
-//       return callback(err);
-//     }
-//     if(!user){
-//       return callback(null, false);
-//     }
-//     if(!bcrypt.compareSync(pass, user.password)){
-//       return callback(null, false);
-//     }
-//     return callback(null, user);
-//   })
-// }))
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);

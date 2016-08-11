@@ -6,6 +6,9 @@ var models = require('../server/models/index');
 var bcrypt = require('bcrypt-nodejs');
 var app = express();
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'nodeAbode' });
@@ -38,17 +41,17 @@ router.post('/listings', function(req, res, next) {
 router.post('/users', function(req, res, callback) {
   models.User.findOne({
     where: {
-      email: req.param('email'),
+      username: req.param('username'),
     }
   }).then(function(user){
     if(!user){
       models.User.create({
-        email: req.param('email'),
+        username: req.param('username'),
         password: bcrypt.hashSync(req.param('password'))
       }).then(function(user){
         passport.authenticate('local', {
-          failureRedirect: '/users/new',
-          successfulRedirect: '/listings'
+          failureRedirect: '/',
+          successRedirect: '/listings'
         })(req, res, callback);
       })
     } else {
@@ -57,31 +60,26 @@ router.post('/users', function(req, res, callback) {
   })
 });
 
-// router.post('/users', function(req, res, next) {
-//   models.User.create({
-//     email: req.param('email'),
-//     password: req.param('password')
-//   }).then(function(user) {
-//     res.redirect('/listings');
-//   });
-// });
-
-passport.use(new LocalStrategy(function(email, pass, callback){
-  var hashedPass = bcrypt.hashSync(pass)
+passport.use(new LocalStrategy(function(username, pass, callback){
+  // var hashedPass = bcrypt.hashSync(pass)
   models.User.findOne({
     where: {
-      email: email
+      username: username
     }
-  }).then(function(user,err){
-    if(err){
+  }).then(function(user, err){
+    if(err){ //if there is an error
+      console.log("********************111111********************");
       return callback(err);
     }
-    if(!user){
+    if(!user){ //if user does not exist
+      console.log("********************2222222********************");
       return callback(null, false);
     }
-    if(!bcrypt.compareSync(pass, user.password)){
+    if(!bcrypt.compareSync(pass, user.password)){ //if password do not match with db password
+      console.log("********************333333********************");
       return callback(null, false);
     }
+    console.log("********************44444********************");
     return callback(null, user);
   })
 }))
@@ -97,8 +95,5 @@ passport.deserializeUser(function(id, callback){
     callback(null, user);
   })
 })
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 module.exports = router;
