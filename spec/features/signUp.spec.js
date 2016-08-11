@@ -28,9 +28,8 @@ describe('User visits signup page', function(){
 
     it('should have a form to fill in', function(next){
       browser.visit('/users/new', function(err) {
-        browser.fill('email', 'user@domain.com');
+        browser.fill('username', 'user@domain.com');
         browser.fill('password', 'password');
-        browser.fill('confirm password', 'password');
         browser.pressButton('Sign Up!', function(){
         expect(browser.html("body")).toContain('Abode sweet Abode!');
         expect(browser.location.pathname).toBe("/listings");
