@@ -11,7 +11,8 @@ app.use(passport.session());
 
 router.use(function(req, res, callback){
   if(req.user){
-    res.locals.currentUser = req.user.username;
+    // res.locals.currentUser = req.user.username;
+    res.locals.currentUser = req.user;
   }
   callback();
 });
@@ -25,9 +26,18 @@ router.get('/users/new', function(req, res) {
   res.render('signUp', { title: 'nodeAbode' });
 });
 
+router.get('/sessions/new', function(req, res) {
+  res.render('signIn');
+});
+
+router.post('/sessions/new', passport.authenticate("local", {
+  failureRedirect: "/sessions/new",
+  successRedirect: "/listings"
+}));
+
 router.get('/listings', function(req, res) {
   listings = models.Listing.findAll().then(function(listings) {
-     res.render('listings', { allListings: listings, currentUser: res.locals.currentUser });
+     res.render('listings', { allListings: listings, currentUser: res.locals.currentUser.username });
    });
 });
 
@@ -36,7 +46,7 @@ router.get('/listings/new', function(req, res) {
     res.render('listingsNew', {title: 'nodeAbode' });
   }
   else{
-    res.redirect('/')
+    res.redirect('/');
   }
 });
 
@@ -44,7 +54,8 @@ router.post('/listings', function(req, res, next) {
   models.Listing.create({
     title: req.param('title'),
     description: req.param('description'),
-    price: req.param('price')
+    price: req.param('price'),
+    UserId: res.locals.currentUser.id
   }).then(function() {
     res.redirect('/listings');
   });

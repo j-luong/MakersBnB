@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <p>Please sign in!</p>
+
+    <form action="/sessions/new" method = "post">
+      <input type = "email" name = "username" placeholder="email" required/>
+      <input type = "password" name = "password" placeholder="password" required/>
+      <input type="submit" name="Sign In!"/>
+    </form>
+
+    <a href="/">Homepage</a>
+  </body>
+</html>
