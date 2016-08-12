@@ -9,22 +9,28 @@
     <h2>Abode sweet Abode!</h2>
 
     {{#currentUser}}
-    
-      <h4>Welcome {{currentUser}}!</h4> <form action='/sessions' method='post'>
+
+      <h4>Welcome {{username}}!</h4> <form action='/sessions' method='post'>
       <input type = 'submit' value='Sign out'>
       </form>
       <a href="/listings/new">Add new.</a>
-
+      <a href="/users/{{id}}">View my listings.</a>
     {{/currentUser}}
+
+    <a href="/">Homepage</a>
 
     <p>
       {{#allListings}}
       <div class="listing">
       <b>{{title}}</b><br/>
       {{description}}<br/>
-      £{{price}}
+      £{{price}}<br/>
+      <a href="/users/{{UserId}}">Check poster's profile</a>
       </div>
       {{/allListings}}
+
+      {{parents}}
+
     </p>
 
   </body>

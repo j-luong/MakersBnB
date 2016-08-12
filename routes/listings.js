@@ -4,7 +4,7 @@ var models = require('../server/models/index');
 
 router.get('/', function(req, res) {
   listings = models.Listing.findAll().then(function(listings) {
-      res.render('listings', { allListings: listings, currentUser: res.locals.currentUsername });
+      res.render('listings', { allListings: listings, currentUser: res.locals.currentUser });
   });
 });
 
@@ -21,10 +21,21 @@ router.post('/', function(req, res, next) {
   models.Listing.create({
     title: req.param('title'),
     description: req.param('description'),
-    price: req.param('price'),
-    UserId: res.locals.currentUser.id
+    price: req.param('price')
+  }).then(function(listing) {
+    res.locals.currentUser.addListing(listing);
   }).then(function() {
     res.redirect('/listings');
+  });
+});
+
+router.get('/:id', function(req, res) {
+  models.Listing.find({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(listing) {
+    res.render('onelisting', { listing: listing });
   });
 });
 

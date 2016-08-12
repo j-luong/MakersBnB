@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nodeAbode</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>nodeAbode</h1>
+    <h2>Abode sweet Abode!</h2>
+
+    {{#listing}}
+    <div class="listing">
+      {{title}}<br/>
+      {{description}}<br/>
+      £{{price}}<br/>
+    </div>
+    {{/listing}}
+
+  </body>
+</html>

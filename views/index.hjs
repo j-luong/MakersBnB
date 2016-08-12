@@ -9,7 +9,8 @@
     <h2>Welcome to {{ title }}!</h2>
     <a href="/sessions/new">Sign In!</a>
     <a href="/users/new">Sign Up!</a>
-
+    <br/><br/>
+    <a href="/listings">View listings.</a>
     <div class="fullscreen-bg">
         <video loop muted autoplay poster="../Pink-Swan/WEBM/Pink-Swan.jpg" class="fullscreen-bg__video">
             <source src="../Pink-Swan/WEBM/Pink-Swan.webm" type="video/webm">

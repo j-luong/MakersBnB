@@ -17,5 +17,6 @@
         £{{price}}
       </div>
     {{/listings}}
+
   </body>
 </html>
