@@ -7,7 +7,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 
 router.get('/new', function(req, res) {
-  res.render('signUp', { title: 'nodeAbode' });
+  res.render('signUp');
 });
 
 router.post('/', function(req, res, callback) {

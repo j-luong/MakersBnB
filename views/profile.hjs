@@ -5,16 +5,20 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>nodeAbode</h1>
-    <h2>Abode sweet Abode!</h2>
-
-    Listings by {{#user}}{{username}}{{/user}}
+    <header>
+      <h1>nodeAbode</h1>
+      <h2>Abode sweet Abode!</h2>
+    </header>
     <br/><br/>
+    <b>Listings by {{#user}}{{username}}{{/user}}</b>
+    <br/><br/>
+      <a href = "/listings">Back to listings...</a>
+    <br/><br/><br/>
     {{#listings}}
       <div class="listing">
         <b>{{title}}</b><br/>
-        {{description}}<br/>
-        £{{price}}
+        <i>{{description}}<br/>
+        £{{price}}</i>
       </div>
     {{/listings}}
 

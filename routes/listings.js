@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
 
 router.get('/new', function(req, res) {
   if(res.locals.currentUser){
-    res.render('listingsNew', {title: 'nodeAbode' });
+    res.render('listingsNew');
   }
   else{
     res.redirect('/');

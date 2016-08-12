@@ -6,7 +6,10 @@
   </head>
   <body>
 
-    <h1>{{ title }}</h1>
+    <header>
+      <h1>nodeAbode</h1>
+      <h2>Abode sweet Abode!</h2>
+    </header>
 
     {{#currentUser}}
 
