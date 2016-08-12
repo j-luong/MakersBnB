@@ -30,6 +30,22 @@ router.post('/', function(req, res, callback) {
   });
 });
 
+router.get('/:id', function(req, res) {
+  models.User.find({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(user) {
+    listings = models.Listing.findAll({
+      where: {
+        UserId: user.id
+      }
+    }).then(function(listings) {
+    res.render('profile', { user: user, listings: listings});
+  });
+  });
+});
+
 passport.use(new LocalStrategy(function(username, pass, callback){
   models.User.findOne({
     where: {username: username}
