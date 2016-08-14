@@ -18,7 +18,11 @@
       {{title}}<br/>
       {{description}}<br/>
       £{{price}}<br/><br/>
-      posted by {{#parent}}{{username}}{{/parent}}
+      posted by
+      <span class="owner">
+        <a href="/users/{{#parent}}{{id}}{{/parent}}">
+          {{#parent}}{{username}}{{/parent}}</a>
+      </span>
     </div>
     {{/listing}}
 
