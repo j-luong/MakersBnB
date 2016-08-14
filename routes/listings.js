@@ -35,9 +35,10 @@ router.get('/:id', function(req, res) {
       id: req.params.id
     }
   }).then(function(listing) {
-    res.render('onelisting', { listing: listing });
+    listing.getUser().then(function(user) {
+    res.render('onelisting', { listing: listing, parent: user });
+  });
   });
 });
-
 
 module.exports = router;

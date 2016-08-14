@@ -5,14 +5,20 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>nodeAbode</h1>
-    <h2>Abode sweet Abode!</h2>
+    <header>
+      <h1>nodeAbode</h1>
+      <h2>Abode sweet Abode!</h2>
+    </header>
+    <br/><br/>
+    <a href = "/listings">Back to listings...</a>
+    <br/><br/>
 
     {{#listing}}
     <div class="listing">
       {{title}}<br/>
       {{description}}<br/>
-      £{{price}}<br/>
+      £{{price}}<br/><br/>
+      posted by {{#parent}}{{username}}{{/parent}}
     </div>
     {{/listing}}
 
