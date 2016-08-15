@@ -1,13 +1,11 @@
+process.env.NODE_ENV='test';
+
 var Browser = require("Zombie");
 
 Browser.localhost('example.com', 3000);
 
 describe('User visits signup page', function(){
   var browser = new Browser();
-
-beforeEach(function(){
-  process.env.NODE_ENV='test';
-});
 
   it('should be able to visit sign up page', function(next){
     browser.visit('/users/new', function(err) {
