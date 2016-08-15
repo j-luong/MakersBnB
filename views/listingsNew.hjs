@@ -13,7 +13,7 @@
 
     {{#currentUser}}
 
-    <h2>Add details below...</h2>
+    <h3>Add details below...</h3>
 
     <form action="/listings" method = "post">
       <input type = "text" name = "title" placeholder="title"/>

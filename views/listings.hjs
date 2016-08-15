@@ -4,7 +4,9 @@
     <title>nodeAbode</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+
   <body>
+
     <header>
       <h1>nodeAbode</h1>
       <h2>Abode sweet Abode!</h2>
@@ -12,31 +14,32 @@
 
     {{#currentUser}}
 
-      <h4>Welcome {{username}}!</h4> <form action='/sessions' method='post'>
-      <input type = 'submit' value='Sign out'>
+      <h4>Welcome {{username}}!</h4>
+
+      <form action='/sessions' method='post'>
+        <input type = 'submit' value='Sign out'>
       </form>
+
       <br/><br/>
       <a href="/listings/new">Add new</a>
       <a href="/users/{{id}}">View my listings</a>
+
     {{/currentUser}}
+
     <a href="/">Home</a>
     <br/><br/>
-    <p>
-      {{#allListings}}
+
+    {{#allListings}}
       <div class="listing">
-      <b>{{title}}</b><br/>
-      <i>{{description}}<br/>
-      £{{price}}</i><br/><br/>
-      <div class="owner"><a href="/users/{{UserId}}">Owner's profile</a></div>
+        <b>{{title}}</b><br/>
+        <i>{{description}}<br/>
+          £{{price}}</i><br/><br/>
+          <div class="owner"><a href="/listings/{{id}}">Read more.</a></div>
       </div>
       {{/allListings}}
 
-      {{parents}}
-
-    </p>
-
     <footer>
-      <a href="jason@luong.com" target="_top">Careers</a>
+      <a href="mailto:jason@luong.com?Subject=Job%20Please" target="_top">Careers</a>
     </footer>
 
   </body>

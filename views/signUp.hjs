@@ -8,7 +8,7 @@
       <h1>nodeAbode</h1>
       <h2>Abode sweet Abode!</h2>
     </header>
-    <p>Please sign up!</p>
+    <h3>Please sign up!</h3>
 
     <form action="/users" method = "post">
       <input type = "email" name = "username" placeholder="email" required/>
