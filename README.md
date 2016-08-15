@@ -29,4 +29,4 @@ Creating the databases
  - ```node_modules/.bin/sequelize db:migrate```
 
 
- **Made with love by Jason, Jess** and Mike **<3**
+ **Made with love by Jason, Jess and Mike <3**
