@@ -28,7 +28,7 @@
 
     <a href="/">Home</a>
     <br/><br/>
-    
+
     {{#allListings}}
       <div class="listing">
         <b>{{title}}</b><br/>
@@ -39,7 +39,7 @@
       {{/allListings}}
 
     <footer>
-      <a href="jason@luong.com" target="_top">Careers</a>
+      <a href="mailto:jason@luong.com?Subject=Job%20Please" target="_top">Careers</a>
     </footer>
 
   </body>
