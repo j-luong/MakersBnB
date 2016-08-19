@@ -29,4 +29,4 @@ Creating the databases
  - ```node_modules/.bin/sequelize db:migrate```
 
 
- **Made with love by [Jason Luong](http://github.com/j-luong), [Jess Astubry](http://github.com/JAstbury) and [Mike Miller](http://github.com/mjosephmiller)**
+ **An Airbnb clone built by [Jason Luong](http://github.com/j-luong), [Jess Astubry](http://github.com/JAstbury) and [Mike Miller](http://github.com/mjosephmiller)**
